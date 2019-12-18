@@ -1,0 +1,91 @@
+.login-wrapper {
+  padding-bottom: 12%;
+}
+
+.login-wrapper {
+  @include set-dimension(100vh, 100vw);
+  @include no-spaces;
+  @include center-content;
+  flex-flow: column nowrap;
+  position: relative;
+  background-color: #009999;
+  p {
+    font-size: 3rem;
+    margin-top: 2rem;
+    letter-spacing: 0.2rem;
+    color: #fff;
+    z-index: 2;
+    position: absolute;
+    top: 10rem;
+    font-family: var(--default-font);
+    @include adjust-to(phone) {
+      top: 25rem;
+    }
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  & > div {
+    @include custom-adjustment(48em, "large") {
+      @include set-dimension(28rem, 52rem);
+    }
+    .card {
+      & > form {
+        margin-top: 3rem;
+      }
+    }
+    @include create-square(auto);
+    @include no-spaces;
+    @include adjust-to(phone) {
+      .card {
+        @include set-dimension(30rem, 100vw);
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        animation: slide-from-bottom 500ms 100ms;
+      }
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .card {
+    border: 0px solid transparent !important;
+    padding: 3.6rem !important;
+    @include custom-adjustment(71.85em, "large") {
+      //   width: 54.5rem;
+      //   margin: 0 !important;
+    }
+  }
+  .form-group {
+    input {
+      height: 4.8rem;
+      font-size: 1.8rem !important;
+    }
+    margin-bottom: 2rem;
+  }
+
+  button {
+    height: 5rem !important;
+    width: 100%;
+    transition: all 0.3s;
+    border: unset !important;
+    font-size: 1.5rem !important;
+  }
+
+  .password-input {
+    position: relative;
+    & > div:last-child {
+      position: absolute;
+      right: 3rem;
+      top: 30%;
+      transform: translate(-50%);
+      cursor: pointer;
+      & > svg {
+        position: absolute;
+        font-size: 2rem;
+        color: var(--grey-color-6);
+      }
+    }
+  }
+  /*mobile styles */
+}

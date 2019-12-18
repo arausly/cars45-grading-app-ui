@@ -1,0 +1,483 @@
+/*
+new styles
+modified-author: Arausi Daniel 
+description:revamp of the grade car page 
+date:Tuesday 13:31 oct 2019
+*/
+
+%wave-styles {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  //   opacity: 0;
+}
+
+@mixin color-response-settings($bg: null) {
+  @if ($bg == true) {
+    &.green {
+      background-color: var(--primary-color);
+    }
+    &.light-green {
+      background-color: var(--color-green-2);
+    }
+    &.yellow {
+      background-color: var(--color-yellow-2);
+    }
+    &.light-red {
+      background-color: var(--color-red-2);
+    }
+    &.red {
+      background-color: var(--color-red-1);
+    }
+  } @else {
+    &.green {
+      color: var(--primary-color);
+    }
+    &.light-green {
+      color: var(--color-green-2);
+    }
+    &.yellow {
+      color: var(--color-yellow-2);
+    }
+    &.light-red {
+      color: var(--color-red-2);
+    }
+    &.red {
+      color: var(--color-red-1);
+    }
+  }
+}
+
+.mainContainer {
+  margin: 32px auto;
+}
+
+.gradeHeader {
+  display: flex;
+  justify-content: space-around;
+}
+
+div.gradecar-title-box {
+  display: flex;
+  & > div:last-child.gradecar-info {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+
+    & > div:last-child.info-alarm {
+      //   opacity: 0;
+      cursor: pointer;
+      @include create-square(4rem);
+      &.green,
+      &.green::after,
+      &.green::before {
+        border: 1px solid var(--color-green-3);
+      }
+      &.light-green,
+      &.light-green::after,
+      &.light-green::before {
+        border: 1px solid var(--color-green-2);
+      }
+      &.yellow,
+      &.yellow::before,
+      &.yellow::after {
+        border: 1px solid var(--color-yellow-2);
+      }
+      &.light-red,
+      &.light-red::before,
+      &.light-red::after {
+        border: 1px solid var(--color-red-2);
+      }
+      &.red,
+      &.red::after,
+      &.red::before {
+        border: 1px solid var(--color-red-1);
+      }
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 50%;
+
+      &::after {
+        @extend %wave-styles;
+        @include create-square(6rem);
+        top: -1rem;
+        left: -1rem;
+      }
+
+      &::before {
+        @extend %wave-styles;
+        @include create-square(2rem);
+        left: 0.9rem;
+        top: 0.9rem;
+      }
+    }
+
+    & > div:first-child {
+      @include create-square(2rem);
+      margin-right: 1rem;
+      margin-top: 1rem;
+      position: relative;
+
+      div:nth-last-child(2) {
+        position: absolute;
+        @include create-square(2rem);
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.35);
+        transition: all 0.5s;
+        z-index: -4;
+      }
+
+      & > div:last-child {
+        position: absolute;
+        right: 0rem;
+        top: 5rem;
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out 0.5s;
+        transform: translateY(1.5rem);
+        & > ul {
+          list-style: none;
+          width: 25rem;
+          height: auto;
+          border-radius: 0.5rem;
+          border: 0px solid transparent;
+          box-shadow: var(--box-shadow-3);
+          & > li {
+            display: flex;
+            justify-content: space-between;
+            &:last-child {
+              & > span:last-child {
+                @include color-response-settings(false);
+              }
+            }
+            & > span:last-child {
+              font-weight: bold;
+            }
+            background-color: #fff;
+            &:first-child {
+              border-top-left-radius: 0.5rem;
+              border-top-right-radius: 0.5rem;
+            }
+            &:last-child {
+              border-bottom-left-radius: 0.5rem;
+              border-bottom-right-radius: 0.5rem;
+            }
+            font-size: 1.3rem;
+            padding: 1rem;
+            &:hover {
+              background-color: var(--grey-color-2);
+            }
+            &:not(:last-child) {
+              border-bottom: 1px solid var(--grey-color-3);
+            }
+          }
+        }
+      }
+    }
+    svg {
+      z-index: 10;
+      opacity: 1;
+      transition: all 0.3s;
+      font-size: 2rem;
+      position: absolute;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--color-green-3);
+        animation-play-state: paused;
+        -webkit-animation-play-state: paused;
+        & + div {
+          transform: scale(1000);
+          background-color: rgba(0, 0, 0, 0.35) !important;
+          z-index: 10 !important;
+        }
+
+        & ~ div:last-child {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+/*
+made modifications to classes gradeMain, gradeKeys, gradeKeysButton
+*/
+
+.gradeMain {
+  display: flex;
+  flex-flow: row nowrap;
+
+  & > div.gradeKeys {
+    border: 1px solid #000;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    width: 20%;
+    padding: 0 !important;
+    border: unset !important;
+    @include adjust-to(phone) {
+      width: 100%;
+    }
+
+    .gradeKeysButton {
+      border: unset !important;
+      background-color: var(--color-green-4);
+      font-size: 1.5rem;
+      font-family: var(--default-font);
+      transition: all 0.5s;
+      border-bottom: 1px solid var(--grey-color-3) !important;
+      display: unset;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & > span {
+        margin-right: 0.5rem;
+        @include create-square(2rem);
+        & > svg {
+          @include create-square(100%);
+        }
+      }
+      &.gradeKeyActive {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
+
+      &:hover {
+        color: #fff;
+        background-color: var(--primary-color);
+      }
+    }
+  }
+}
+
+.dashboardButtonContainer {
+  @extend %centered-btn-style;
+}
+
+.grade-progress-marker {
+  display: none;
+  @include adjust-to(phone) {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    background-color: var(--color-red-1);
+    color: #fff;
+    @include set-dimension(3rem, 5rem);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--box-shadow-3);
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
+}
+
+.dashboardButton {
+  background-color: #666666 !important;
+  color: #fff !important;
+  padding: 0.5em 1.5em !important;
+  font-size: 1.2em !important;
+}
+
+.gradeKeysButton {
+  border-top: 1px solid !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid !important;
+  width: 100%;
+  padding: 1em;
+  &:first-child {
+    @include top-border-radius(0.5rem);
+  }
+  &:last-child {
+    @include bottom-border-radius(0.5rem);
+  }
+}
+
+.gradeValues {
+  border: 1px solid var(--grey-color-3) !important;
+  border-radius: 0.5rem;
+  margin-left: 5px;
+  padding: 3em;
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  flex: 1;
+  font-family: var(--default-font);
+  box-shadow: var(--box-shadow-2);
+}
+
+.gradeValuesHeading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  & > h1 {
+    position: relative;
+    transition: all 0.3s;
+    font-size: 2.5rem;
+    height: 2.5rem;
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.9rem;
+      height: 0.3rem;
+      width: 10%;
+      transition: all 0.3s;
+      background-color: var(--primary-color);
+    }
+  }
+
+  div:first-of-type {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    align-items: center;
+    & > button {
+      @include color-response-settings(true);
+      @include create-square(4rem);
+      transition: all 0.4s;
+      color: #fff;
+      border: unset;
+      border-radius: 0.2rem;
+      font-size: 1.3rem;
+      font-family: var(--font-display-2);
+    }
+  }
+}
+
+.gradeChecklist {
+  @include custom-adjustment(48.0625em, "large") {
+    height: 50rem;
+  }
+  height: 100%;
+  margin-right: 1em;
+  display: flex;
+  flex-flow: column wrap;
+  & > div {
+    &:not(:last-child) {
+      margin-bottom: 0.9rem;
+    }
+    & > label {
+      @include custom-adjustment(48.0625em, "large") {
+        width: 37.7rem;
+      }
+      & > div.checklist-box {
+        @include adjust-to(phone) {
+          align-items: flex-start;
+          width: auto;
+          justify-content: flex-start;
+          flex-flow: column nowrap;
+          & > *:first-child {
+            margin-bottom: 0.85rem;
+          }
+        }
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        & > span[id^="Tooltip"] {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.gradeChecklist > div {
+  margin-right: 1em;
+}
+
+.btn-group-vertical {
+  width: 100%;
+}
+
+.gradeKeyActive {
+  background: #d3d3d3;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  .gradeMain {
+    flex-direction: column;
+  }
+
+  .gradeHeader,
+  .gradeValuesHeading {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .gradeValues,
+  .gradeKeys {
+    width: 100%;
+  }
+
+  .gradeValues {
+    margin-top: 1em;
+    margin-left: 0;
+  }
+}
+
+/* On screens that are 576px or less */
+@media screen and (max-width: 576px) {
+  .gradeKeys {
+    border: none;
+  }
+}
+
+/** custom back button for the grade car flow, started in the start of the grade car flow **/
+
+div.gradecar-back-button {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 20%;
+  & > a {
+    display: flex;
+    text-decoration: none;
+    color: #000;
+    flex-flow: row nowrap;
+    cursor: pointer;
+    &:hover {
+      & > p {
+        color: var(--color-green-3);
+        transform: translateX(0.3rem);
+      }
+      & > svg {
+        color: var(--color-green-3);
+        transform: translateX(-0.3rem);
+      }
+    }
+    & > p {
+      font-size: 1.5rem;
+      margin-right: 5rem;
+      transition: all 0.3s;
+    }
+    & > svg {
+      transition: all 0.3s;
+      margin-top: -0.8rem;
+      margin-left: -0.8rem;
+      font-size: 4rem;
+    }
+  }
+  & > p {
+    font-weight: 500;
+    font-family: var(--font-display-2);
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}

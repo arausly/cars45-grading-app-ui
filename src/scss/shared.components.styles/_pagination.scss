@@ -1,0 +1,72 @@
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  @include adjust-to(phone) {
+    justify-content: center;
+  }
+
+  %span-style {
+    cursor: pointer;
+    display: inline-block;
+    @include create-square(3rem);
+    box-shadow: var(--box-shadow-3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 300ms, color 300ms;
+    &:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+  }
+
+  & > div.pagination-box {
+    display: flex;
+    align-items: center;
+    & > div.paginate-numbers {
+      font-family: var(--default-font);
+      margin: 0 1rem;
+      display: flex;
+      font-size: 2rem;
+      & > span {
+        @extend %span-style;
+        &:not(:last-child) {
+          margin-right: 0.5rem;
+        }
+        &.active {
+          background-color: var(--primary-color);
+          color: #fff;
+        }
+      }
+    }
+
+    & > span:nth-last-child(2) {
+      display: flex;
+      margin-right: 1rem;
+      cursor: pointer;
+      &:hover {
+        & > span {
+          background-color: var(--primary-color);
+        }
+      }
+      & > span {
+        @include create-square(0.5rem);
+        transition: background-color 300ms;
+        border-radius: 50%;
+        background-color: var(--grey-color-1);
+        &:not(:last-child) {
+          margin-right: 0.1rem;
+        }
+      }
+    }
+    & > span:first-child,
+    & > span:last-child {
+      @extend %span-style;
+      & > svg {
+        font-size: 2rem;
+      }
+    }
+  }
+}

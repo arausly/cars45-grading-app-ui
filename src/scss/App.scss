@@ -1,0 +1,33 @@
+/**abstracts styles e.g @functions, @mixins **/
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
+/*base files typography layouts etc*/
+@import "./base/utilities";
+@import "./base/base";
+@import "./base/animations";
+
+/* components */
+@import "./component.styles/main";
+@import "./component.styles/dashboard";
+@import "./component.styles/gradecar";
+@import "./component.styles/login";
+@import "./component.styles/offer";
+@import "./component.styles/result";
+@import "./component.styles/olddashboard";
+@import "./component.styles/gradelist-section";
+@import "./component.styles/preview";
+@import "./component.styles/insights";
+
+// shared components
+@import "./shared.components.styles/loader";
+@import "./shared.components.styles/modal";
+@import "./shared.components.styles/notification";
+@import "./shared.components.styles/navbar";
+@import "./shared.components.styles/toggleswitch";
+@import "./shared.components.styles/dropdown";
+@import "./shared.components.styles/qcnotifier";
+@import "./shared.components.styles/pendingofferscount";
+@import "./shared.components.styles/marker";
+@import "./shared.components.styles/table";
+@import "./shared.components.styles/pagination";

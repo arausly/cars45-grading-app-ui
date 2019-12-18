@@ -1,0 +1,9 @@
+input[id^="custom-dropdown"] {
+  &:checked {
+    & + ul {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(0rem) !important;
+    }
+  }
+}

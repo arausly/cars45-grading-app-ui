@@ -1,0 +1,124 @@
+@mixin adjust-to($breakpoint) {
+  @if ($breakpoint == small-android) {
+    @media only screen and (max-width: 20em) {
+      // less or equal to 320px;
+      @content;
+    }
+  }
+  @if ($breakpoint == phone) {
+    @media only screen and (max-width: 37.5em) {
+      // less or equql to 600px
+      @content;
+    }
+  }
+  @if ($breakpoint == android-phone) {
+    @media only screen and (max-width: 31.25em) {
+      //less or equal to 500px
+      @content;
+    }
+  }
+  @if ($breakpoint == tab-port) {
+    @media only screen and (max-width: 56.25em) {
+      // less or equal to 900px
+      @content;
+    }
+  }
+  @if ($breakpoint == tab-land) {
+    @media only screen and (max-width: 75em) {
+      //less or equal to 1200px
+      @content;
+    }
+  }
+  @if ($breakpoint == big-desktop) {
+    //greater or equal to 1800px
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
+
+@mixin custom-adjustment($break-value, $mode: null) {
+  @if ($mode == "large") {
+    @media only screen and (min-width: $break-value) {
+      @content;
+    }
+  } @else {
+    @media only screen and (max-width: $break-value) {
+      @content;
+    }
+  }
+}
+
+/*modal generic styles*/
+@mixin modal-sidebar-toggle {
+  & > input {
+    & + div {
+      opacity: 0;
+      visibility: hidden;
+      z-index: -9;
+    }
+    &:not(:checked) {
+      & + div {
+        opacity: 0;
+        visibility: hidden;
+        z-index: -9;
+      }
+    }
+    &:checked {
+      & + div {
+        opacity: 1;
+        visibility: visible;
+        z-index: 99999;
+        @include adjust-to(phone) {
+          & > div {
+            // animation: slide-from-bottom 1s ease-in-out 0.1s;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin set-dimension($height, $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin create-square($dimension: null) {
+  @if ($dimension == null) {
+    @include set-dimension(100%, 100%);
+  } @else {
+    @include set-dimension($dimension, $dimension);
+  }
+}
+
+@mixin create-submit-cta-btn($closebtnExist: false) {
+  @if ($closebtnExist != true) {
+    @include set-dimension(5rem, 15rem);
+    @content;
+  } @else {
+    @include set-dimension(5rem, 25rem);
+    @content;
+  }
+}
+
+@mixin top-border-radius($radius) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin bottom-border-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin no-spaces {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@mixin center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

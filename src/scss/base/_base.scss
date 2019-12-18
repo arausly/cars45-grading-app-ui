@@ -1,0 +1,94 @@
+/*base styles for  html element to be inherited across all elements*/
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 16px default--> 10px;
+  height: 100%;
+  width: 100%;
+  font-family: var(--default-font) !important;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/**/
+.container {
+  padding: 0 !important;
+  margin: 0 !important;
+  // min-height: 100vh;
+  // min-width: 100vw;
+}
+
+body {
+  background-color: var(--grey-color-2) !important;
+  min-height: 100vh;
+  @include adjust-to(phone) {
+    background-color: #fff !important;
+  }
+  & > div {
+    min-height: 100vh;
+  }
+}
+
+@mixin btn-genric-styles($bgcolor, $color) {
+  background-color: $bgcolor;
+  color: $color;
+  border: 1px solid $bgcolor;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
+
+.btn-rej {
+  @include set-dimension(5rem, 15rem);
+  @include btn-genric-styles(#dfe6e9, #636e72);
+}
+
+.btn-accept {
+  &.btn2 {
+    @include create-submit-cta-btn(true) {
+      @include btn-genric-styles(var(--color-red-2), var(--color-red-1));
+    }
+  }
+  @include create-submit-cta-btn(false) {
+    @include btn-genric-styles(var(--color-red-2), var(--color-red-2));
+  }
+}
+
+.cars45-btn {
+  border: unset;
+  border-radius: 0.4rem;
+  transition: all 0.3s;
+  background-color: var(--grey-color-3);
+  color: #fff;
+  &.primary {
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+    &:hover {
+      background-color: var(--color-green-3) !important;
+    }
+    &:active {
+      background-color: var(--primary-color) !important;
+    }
+  }
+}
+
+.backdrop {
+  position: absolute;
+  display: inline-block;
+  @include create-square(100%);
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms;
+  @include adjust-to(phone) {
+    opacity: 1;
+    visibility: visible;
+  }
+}

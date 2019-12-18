@@ -1,0 +1,354 @@
+.dashboardContainer {
+  margin: 32px auto;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.dashboardMain {
+  display: flex;
+}
+
+.dashboardResult {
+  display: flex;
+
+  justify-content: flex-end;
+  // width: 80%;
+  margin-top: 1.5em;
+}
+
+.dashboardResultButton {
+  background-color: #666666 !important;
+  color: #fff !important;
+  padding: 0.5em 1.5em !important;
+  font-size: 1.2em !important;
+}
+
+.gradeKeys {
+  border: 1px solid #000;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  width: 20%;
+}
+
+.gradeKeysButton {
+  border-top: 1px solid !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid !important;
+  width: 100%;
+  padding: 1em;
+}
+
+.gradeValues {
+  border: 1px solid #000;
+  margin-left: 5px;
+  padding: 3em;
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+}
+
+.gradeValuesHeading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gradeChecklist {
+  margin-right: 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gradeChecklist > div {
+  margin-right: 1em;
+}
+
+.btn-group-vertical {
+  width: 100%;
+}
+
+.gradeKeyActive {
+  background: #d3d3d3;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  .dashboardMain {
+    flex-direction: column;
+  }
+
+  .dashboardHeader,
+  .gradeValuesHeading {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .gradeValues,
+  .gradeKeys {
+    width: 100%;
+  }
+
+  .gradeValues {
+    margin-top: 1em;
+    margin-left: 0;
+  }
+}
+
+/* On screens that are 576px or less */
+@media screen and (max-width: 576px) {
+  .gradeKeys {
+    border: none;
+  }
+}
+
+/* Result.scss */
+
+.resultContainer {
+  border: 1px solid #000;
+  margin-left: 5px;
+  padding: 3em;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.sectionGrading h3 {
+  text-align: center;
+}
+
+.score {
+  text-align: center;
+  font-weight: 800;
+}
+
+.score p {
+  font-size: 1.5em;
+}
+
+.gradeContainer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+}
+
+.gradeContainer > button {
+  height: 40px;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  .resultContainer,
+  .gradeContainer {
+    flex-direction: column;
+  }
+
+  .score p {
+    font-size: 1.3em;
+  }
+
+  .sectionFactors {
+    margin-top: 1em;
+  }
+}
+
+/* /Result.scss */
+
+/*new-styles*/
+.cars45-dashboard {
+  // width: 100vw;
+  font-family: var(--font-display-1);
+  margin: 0 !important;
+  padding: 0 !important;
+  div.mainContainer {
+    .cars45-dropdown-icon {
+      position: absolute;
+      right: 4rem;
+      top: 30%;
+      font-size: 2rem;
+      color: var(--grey-color-3);
+    }
+
+    position: relative;
+    border-radius: 0.7rem;
+    box-shadow: var(--box-shadow-3);
+
+    button {
+      background-color: var(--primary-color);
+      font-family: var(--font-display-1);
+      border: unset !important;
+      transition: all 0.3s;
+    }
+    form > div > div {
+      max-width: 100%;
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+  @include custom-adjustment(48.0625em, "large") {
+    @include set-dimension(auto, 80rem);
+    & > div.mainContainer {
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      transform: translate(-50%, -30%);
+      form {
+        margin-left: 1.3rem;
+        & > div {
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: flex-start;
+          & > div {
+            max-width: 100%;
+            &:not(:last-child) {
+              margin-bottom: 2rem;
+            }
+            &:last-child {
+              padding-bottom: 0;
+            }
+            width: 100%;
+            select,
+            input {
+              font-size: 1.5rem;
+              width: 40rem;
+              height: 4rem;
+              font-family: var(--font-display-1);
+            }
+          }
+        }
+      }
+      button {
+        width: 40rem;
+        height: 4rem;
+        font-size: 1.7rem !important;
+      }
+    }
+  }
+  & > div.mainContainer {
+    & > div:last-child {
+      & > p {
+        display: flex;
+        flex-flow: column nowrap;
+        & > button {
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+}
+
+/*admin dashboard*/
+section.admin-dashboard {
+  @include adjust-to(phone) {
+    padding: 0 !important;
+  }
+  button {
+    cursor: pointer;
+  }
+  padding: 0 16rem;
+  & > div {
+    div:nth-last-child(2) {
+      margin-bottom: 3rem;
+    }
+  }
+  div.dashboard-filter {
+    margin-bottom: 5rem !important;
+    input {
+      height: 3rem !important;
+    }
+    button {
+      @include set-dimension(3.2rem, 10rem);
+      font-size: 1.4rem;
+    }
+  }
+  h3 {
+    @extend %header-text-style;
+    margin-bottom: 1.5rem;
+  }
+
+  table {
+    tbody {
+      tr {
+        & > td {
+          &:first-child {
+            font-style: italic;
+            & > a {
+              transition: all 300ms;
+              &:hover {
+                text-decoration: none;
+              }
+            }
+          }
+        }
+        position: relative !important;
+        transform: translate(0rem);
+        box-shadow: unset;
+        &:hover {
+          div.cars45__marker-msg {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+        & > td {
+          div.cars45__marker {
+            left: 0.1rem;
+            top: 0.1rem;
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cars45-image-box {
+  @include create-square(8rem);
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  border-radius: 50%;
+  border: 1.2rem solid #fff;
+  transform: translateX(-50%);
+  & > img {
+    @include create-square();
+    object-fit: cover;
+  }
+
+  & + div.text-center {
+    margin-bottom: 1.5rem !important;
+    margin-top: 2.8rem !important;
+  }
+}
+
+.tables-container {
+  & > h2 {
+    font-size: 2.5rem;
+    font-family: var(--font-display-1);
+    margin: 1.5rem;
+  }
+  & > div {
+    &:first-of-type {
+      margin-bottom: 5rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .cars45-switch-box > label {
+    transform: translateX(1.5rem) !important;
+  }
+}
+
+.car_found-text {
+  font-size: 2.5rem;
+  font-weight: 500;
+  font-family: var(--default-font);
+}
+
+.car_notfound-text {
+  color: var(--color-red-1);
+}

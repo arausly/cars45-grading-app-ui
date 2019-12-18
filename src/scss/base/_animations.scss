@@ -1,0 +1,43 @@
+/* common styles*/
+.btn--animated {
+  transition: all 0.2s;
+  &:hover {
+    transform: translateY(-0.6rem);
+    box-shadow: var(--box-shadow-3);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: var(--box-shadow-2);
+  }
+}
+
+.wave-effect {
+  animation: wave-effect 3s ease-in-out 0.1s infinite;
+}
+
+.slideFromBottom {
+  animation: slide-from-bottom 4s cubic-bezier(1, 0, 0, 1);
+}
+
+@keyframes slide-from-bottom {
+  0% {
+    transform: translateY(100rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes wave-effect {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+    transform: scale(2.2);
+  }
+  100% {
+    opacity: 0;
+  }
+}

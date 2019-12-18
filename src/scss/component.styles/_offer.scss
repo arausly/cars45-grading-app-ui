@@ -1,0 +1,551 @@
+%header-text-style {
+  font-size: 2.5rem !important;
+  font-family: var(--font-display-2) !important;
+  margin-bottom: 2.5rem;
+  margin-top: 2rem;
+}
+
+.offerContainer {
+  border: 1px solid var(--grey-color-3) !important;
+  border-radius: 0.5rem;
+  margin-left: 5px;
+  padding: 3em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  width: 100%;
+
+  .summary-results-panel {
+    & > div {
+      &.panel__negotiation-status:nth-child(3) {
+        small {
+          font-style: italic;
+          color: var(--grey-color-6);
+          font-size: 1.2rem !important;
+        }
+        & > p {
+          &:nth-child(2) {
+            font-size: 1.4rem;
+            font-weight: 500;
+            font-size: 1.4rem;
+            &.pending,
+            &.negotiating {
+              color: var(--color-yellow-2);
+            }
+            &.rejected {
+              color: var(--color-red-1);
+            }
+            &.accepted {
+              color: var(--primary-color);
+            }
+          }
+        }
+      }
+      &.panel__user-info {
+        display: flex;
+        align-items: center;
+        & > svg {
+          font-size: 8.5rem;
+        }
+        & > div {
+          & > p {
+            &:first-child {
+              font-size: 1.3rem;
+              font-weight: 500;
+            }
+            &:nth-child(n + 2) {
+              font-style: italic;
+              color: var(--grey-color-6);
+              font-size: 1.2rem !important;
+            }
+          }
+        }
+        & > p {
+          font-size: 1.5rem;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+.offerDetails {
+  margin-top: 3rem;
+
+  .table-owner {
+    position: relative;
+  }
+
+  h3 {
+    @extend %header-text-style;
+  }
+  table {
+    tbody {
+      tr {
+        td {
+          height: 5.2rem;
+          &:nth-child(2) {
+            input {
+              font-size: 1.5rem !important;
+            }
+            border-bottom: 1px solid var(--grey-color-2);
+          }
+          &:nth-child(3) {
+            & > div {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 0 1rem;
+              & > p {
+                margin-bottom: 0 !important;
+              }
+              & > span {
+                & > svg {
+                  border-radius: 50%;
+                  background-color: transparent;
+                  font-size: 3rem;
+                  cursor: pointer;
+                  &:first-child {
+                    color: var(--primary-color);
+                  }
+                  &:last-child {
+                    color: var(--color-red-1);
+                  }
+                }
+              }
+            }
+          }
+
+          &:nth-last-child(2) {
+            & > span {
+              & > svg {
+                margin-left: 0.5rem;
+                color: var(--color-yellow-2);
+                font-size: 2rem;
+              }
+            }
+          }
+          &:last-child {
+            svg {
+              font-size: 2.5rem;
+              color: var(--grey-color-6);
+              cursor: pointer;
+            }
+            position: relative;
+          }
+          ul.cars45-settings-dropdown {
+            top: -4rem !important;
+            right: 10rem !important;
+            left: unset !important;
+            transform: translate(1.5rem) !important;
+            list-style: none;
+            li {
+              text-align: left;
+              &[class="cars45-custom-dropdown"] {
+                & > label {
+                  & > svg {
+                    font-size: 1.6rem !important;
+                  }
+                }
+              }
+              ul {
+                li {
+                  &:nth-child(2):hover {
+                    background-color: var(--color-red-1) !important;
+                  }
+                  &:last-child:hover {
+                    background-color: var(--color-yellow-2) !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.offerHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.vehicleDetails {
+  margin-left: 1em;
+}
+
+.vehicleDetails > p {
+  border-bottom: 1px solid black;
+}
+
+.vehicleDetails > p:first-of-type {
+  border-top: 1px solid black;
+}
+
+.action {
+  cursor: pointer;
+}
+
+.action button {
+  margin-left: 0.5em;
+  background-color: #ff9100;
+  border: none;
+}
+
+.offerDetails button {
+  background-color: #ff9100;
+  border: none;
+}
+
+.updateApprove {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sellersInfo,
+.sellersInfo > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sellersInfo {
+  border-bottom: 1px solid black;
+}
+
+.sellersInfo > p {
+  width: 30%;
+}
+
+.sellersInfoManage {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+.sellersInfoForm button,
+.sellersInfoForm label {
+  margin-top: 1em;
+}
+
+.disableddiv {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+table.offerlog {
+  th {
+    font-size: 1.5rem;
+    font-family: var(--font-display-2);
+    &:not(:last-child) {
+      padding-right: 2rem;
+    }
+  }
+  td {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.5rem 0.5rem 0rem;
+  }
+}
+
+.approved-amount__form {
+  & > div {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  padding: 1rem;
+  label {
+    margin-bottom: 0.5rem;
+  }
+  input {
+    padding-left: 1rem;
+    border: unset;
+    background-color: var(--color-green-4-1);
+    border-radius: 0.4rem;
+  }
+  & > div:last-child {
+    margin-top: 0rem !important;
+  }
+
+  flex-flow: column nowrap;
+  & > div:nth-child(-n + 2) {
+    margin-bottom: 2rem;
+  }
+
+  & > div {
+    width: 100%;
+  }
+}
+
+.sellersInfoForm {
+  @include custom-adjustment(38em, "large") {
+    label {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    input {
+      @include set-dimension(4.8rem, 40rem);
+      font-size: 1.4rem;
+      &:placeholder-shown {
+        font-style: italic;
+        font-size: 1.3rem;
+        color: var(--grey-color-1);
+      }
+    }
+
+    div:last-child {
+      margin-top: 2rem;
+      button {
+        font-size: 1.4rem;
+        border: unset;
+        @include set-dimension(4.8rem, 20rem);
+        transition: all 0.3s;
+      }
+    }
+  }
+
+  @include adjust-to(phone) {
+    label {
+      font-size: 1.3rem;
+    }
+    input {
+      font-size: 1.3rem;
+      @include set-dimension(4rem, 100%);
+      &:placeholder-shown {
+        font-style: italic;
+        font-size: 1.2rem;
+        color: var(--grey-color-1);
+      }
+    }
+    button {
+      font-size: 1.4rem;
+      @include set-dimension(4rem, 100%);
+      border: unset;
+    }
+  }
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  .offerContainer {
+    flex-direction: column;
+    padding: 2em;
+  }
+
+  .vehicleDetails {
+    margin-bottom: 1em;
+    order: -1;
+  }
+
+  .vehicleDetails > h3 {
+    font-size: 1.1rem;
+  }
+
+  .sellersInfo {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.offerHeader {
+  .cars45-custom-dropdown {
+    ul {
+      & > li,
+      label {
+        &:hover {
+          background-color: var(--grey-color-4) !important;
+        }
+      }
+    }
+  }
+}
+
+.button-container {
+  margin-top: 2rem !important;
+  button {
+    @include set-dimension(4rem, 15rem);
+    margin-left: 3rem;
+    font-size: 1.6rem;
+    transition: all 0.3s !important;
+  }
+}
+
+.download-btn {
+  @include set-dimension(4rem, 15rem);
+  transition: all 0.3s !important;
+
+  & > span:first-child {
+    margin-right: 0.5rem;
+    font-size: 1.6rem;
+  }
+}
+
+.offerDetails {
+  tbody {
+    tr {
+      &:not(:first-child) {
+        visibility: hidden;
+        // display: none;
+      }
+      &:nth-child(2n + 1) {
+        box-shadow: unset !important;
+        transform: translate(0) !important;
+      }
+    }
+  }
+}
+
+.negotiation-prices {
+  h3 {
+    @extend %header-text-style;
+  }
+
+  svg {
+    color: var(--grey-color-6);
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+  tr {
+    background-color: #fff !important;
+    & > td {
+      input {
+        padding: 0.3rem;
+        padding-left: 1rem;
+      }
+      border-bottom: unset;
+      &:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      & > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          & > * {
+            &:not(:last-child) {
+              margin-right: 1rem;
+            }
+          }
+        }
+        & > p:last-child {
+          color: var(--color-red-1) !important;
+          font-size: 1.2rem;
+          margin-top: 0.4rem;
+        }
+      }
+    }
+  }
+  button {
+    @include set-dimension(3rem, 10rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    margin-bottom: 0 !important;
+  }
+}
+
+.offerlog {
+  position: absolute;
+  top: 10rem;
+  padding: 1rem;
+
+  @include adjust-to(phone) {
+    top: 18rem;
+  }
+
+  & > h4 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    & + div,
+    & ~ div {
+      & > div {
+        display: flex;
+        align-items: center;
+        & > p {
+          font-size: 1.3rem;
+          &:not(:last-child) {
+            margin-right: 4rem;
+          }
+        }
+      }
+    }
+
+    & + div {
+      p {
+        font-size: 1.3rem;
+        &:not(:last-child) {
+          margin-right: 7rem !important;
+        }
+      }
+    }
+  }
+}
+
+.table-formatted,
+.input-formatted {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.1rem;
+  padding-left: 1rem;
+
+  input {
+    font-size: 1.3rem;
+    color: #000;
+  }
+  p,
+  input {
+    margin-right: 1rem;
+    margin-bottom: 0 !important;
+  }
+
+  svg {
+    color: var(--grey-color-6);
+    cursor: pointer;
+    font-size: 2rem;
+  }
+}
+
+.offerDetails {
+  th,
+  td {
+    border: unset !important;
+  }
+  tr:first-child {
+    border-bottom: 1px solid #dee2e6 !important;
+  }
+  td {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  td:nth-last-child(2),
+  td:last-child {
+    padding-top: 1rem !important;
+  }
+}
+
+.offer-btn {
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  & > * {
+    @include set-dimension(3rem, 10rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:first-child {
+      margin-right: 1rem;
+    }
+  }
+}

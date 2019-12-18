@@ -1,0 +1,18 @@
+.pending-offers-to-review {
+  @extend %notifiers-common-styles;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+  top: 15rem;
+  @include adjust-to(phone) {
+    top: 6rem;
+  }
+  right: 0;
+  & > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > p:first-child {
+      margin-right: 0.8rem !important;
+    }
+  }
+}

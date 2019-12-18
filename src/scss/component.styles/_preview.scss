@@ -1,0 +1,434 @@
+%grade-values-style {
+  & > div {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    & > p {
+      font-weight: 400;
+    }
+    & > span {
+      font-size: 1.5rem;
+      margin-right: 1.5rem;
+      margin-top: -0.6rem;
+      &.check {
+        color: var(--primary-color);
+      }
+      &.fail {
+        color: var(--color-red-1);
+      }
+    }
+  }
+}
+section.cars45-valuation {
+  @include set-dimension(100vh, 100vw);
+  font-family: var(--default-font);
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: center;
+  @include custom-adjustment(37.5625em, "large") {
+    justify-content: flex-start;
+  }
+}
+
+.err__not-found {
+  margin-top: 3rem;
+  font-size: 1.8rem;
+  @include adjust-to(phone) {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+  }
+  color: var(--color-red-1);
+}
+
+.result-summary-section {
+  @include set-dimension(100vh, 100vw);
+  display: grid;
+  grid: repeat(2, 1fr) / 1fr;
+}
+
+.result-grading {
+  @include custom-adjustment(37.5625em, "large") {
+    @include set-dimension(auto, 100%);
+    display: grid;
+    grid: 1fr / 1fr 4fr;
+    background-color: #fff;
+
+    .car45-valuation-gradeKeys {
+      ul.cars45-desktop {
+        list-style: none;
+        min-height: 100%;
+        margin-bottom: 0rem !important;
+        background-color: var(--grey-color-2);
+        & > li {
+          text-align: center;
+          background-color: var(--color-green-4);
+          border-bottom: 1px solid var(--grey-color-3);
+          font-size: 1.5rem;
+          transition: background-color 300ms, color 300ms;
+          cursor: pointer;
+          height: 5rem;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          &:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .cars45-valuation-gradeValues {
+      @include custom-adjustment(37.5625em, "large") {
+        max-height: 50rem;
+        display: flex;
+        flex-flow: column wrap;
+        transition: max-height 1s ease-in-out;
+      }
+      padding: 2rem;
+      & > div {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        & > p {
+          font-weight: 400;
+        }
+        & > span {
+          font-size: 2.5rem;
+          margin-right: 1.5rem;
+          margin-top: -0.6rem;
+          &.check {
+            color: var(--primary-color);
+          }
+          &.fail {
+            color: var(--color-red-1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.cars45-valuation__header {
+  @include set-dimension(50vh, 100vw);
+  display: grid;
+  grid: 1fr / repeat(2, 1fr);
+  & > aside {
+    height: 50vh;
+  }
+  & > aside:first-child {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  & > aside:last-child {
+    grid-area: 1 / 2 / 2 / 3;
+    display: grid;
+    grid: repeat(1fr, 3) / repeat(3, 1fr);
+
+    & > div:first-child {
+      grid-area: 1 / 1 / 3 / 4;
+    }
+
+    & > div:nth-child(2) {
+      grid-area: 3 / 1 / 4 / 2;
+    }
+
+    & > div:nth-child(3) {
+      grid-area: 3 / 2 / 4 / 3;
+    }
+
+    & > div:last-child {
+      grid-area: 3 / 3 / 4 / 4;
+    }
+
+    & > div {
+      cursor: pointer;
+      & > img {
+        @include create-square();
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.cars45-valuation__overview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > div {
+    & > h1 {
+      font-size: 4.5rem !important;
+    }
+    & > p:first-of-type {
+      font-size: 2.5rem;
+    }
+    & > p:nth-child(n + 3) {
+      font-style: italic;
+      color: var(--grey-color-7);
+      font-size: 1.5rem;
+    }
+    & > div.cars45-btn-group {
+      display: flex;
+      & > label,
+      & > a {
+        &:first-child {
+          margin-right: 1.5rem;
+        }
+        @include set-dimension(4rem, 15rem);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 300ms, box-shadow 300ms;
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+div.search-box {
+  position: relative;
+  & > p {
+    transition: all 300ms;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    margin-bottom: 0rem;
+  }
+  @include adjust-to(phone) {
+    font-size: 1.2rem;
+    & > input {
+      @include set-dimension(4rem, 20rem);
+      padding: 0.4rem;
+      padding-left: 1rem;
+      border: 1px solid var(--grey-color-2);
+      border-radius: 0.4rem;
+
+      &:focus,
+      &:valid {
+        & + p {
+          top: -3rem;
+          left: 0rem;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  @include custom-adjustment(37.5625em, "large") {
+    margin-top: 10rem;
+    & > p {
+      font-size: 1.5rem;
+    }
+    & > input {
+      @include set-dimension(5rem, 30rem);
+      padding: 0.4rem;
+      padding-left: 1rem;
+      border: 1px solid var(--grey-color-2);
+      border-radius: 0.4rem;
+      font-size: 1.5rem;
+
+      &:focus,
+      &:valid {
+        & + p {
+          top: -3rem;
+          left: 0rem;
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+.cars45-modal-content {
+  .search-box {
+    margin-top: 1rem !important;
+  }
+}
+
+.cars45-mobile {
+  display: block;
+  @include custom-adjustment(37.5625em, "large") {
+    display: none;
+  }
+}
+
+.cars45-desktop {
+  display: block;
+  @include adjust-to(phone) {
+    display: none;
+  }
+}
+
+//experimental solution
+// .something {
+//   counter-reset: label;
+
+//   input {
+//     counter-increment: label;
+//     &#grade-key-#{counter(label)}{
+//       &:checked  {
+//       }
+//     }
+//   }
+// }
+
+.car45-valuation-gradeKeys {
+  @mixin open-accordion-style($child-number) {
+    &[id="grade-key-#{$child-number}"] {
+      &:checked {
+        & ~ ul.cars45-mobile {
+          & > label[for="grade-key-#{$child-number}"] {
+            & > div:last-child {
+              opacity: 1;
+              visibility: visible;
+              max-height: 100rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & > input {
+    @for $i from 0 through 6 {
+      @include open-accordion-style($i);
+    }
+  }
+  //accordion for gradings
+  ul.cars45-mobile {
+    padding: 1rem;
+    & > label {
+      border-bottom: 1px solid var(--grey-color-3);
+      width: 100%;
+      display: inline-block;
+      margin-bottom: 0rem !important;
+      overflow: hidden;
+      & > div:first-child {
+        @include set-dimension(4rem, 100%);
+        font-size: 1.5rem;
+        background-color: var(--color-green-4);
+        // color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 0.4rem;
+        padding-left: 1rem;
+      }
+      & > div:last-child {
+        background-color: #fff;
+        color: #000;
+
+        @extend %grade-values-style;
+
+        opacity: 0;
+        visibility: collapse;
+        max-height: 0rem;
+        transition: all 300ms;
+      }
+    }
+  }
+}
+
+//mobile styles for header
+.cars45-valuation__header {
+  @include custom-adjustment(55.5625em, "small") {
+    @include set-dimension(100vh, 100vw);
+    grid: repeat(2, 1fr) / 1fr;
+
+    & > aside:first-child {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    & > aside:last-child {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+  }
+}
+
+//mobile styles for header
+.cars45-valuation__overview {
+  @include adjust-to(phone) {
+    & > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column nowrap;
+      & > h1 {
+        font-size: 2.5rem !important;
+      }
+
+      & > div.cars45-btn-group {
+        label {
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+}
+
+.carousel-item {
+  @include set-dimension(50vh, 50vw);
+  & > img {
+    @include create-square();
+    object-fit: cover;
+    display: inline-block;
+  }
+}
+
+.carousel-item.active {
+  background-color: transparent;
+  border: unset !important;
+  border-color: transparent !important;
+  border-image-width: 0 !important;
+}
+
+.car-image-control {
+  margin-top: 3.5rem;
+  font-family: var(--default-font);
+  & > p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    &:first-child {
+      margin-right: 1rem;
+    }
+    &:last-child {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.carousel-caption {
+  & > h3 {
+    color: #fff;
+    display: inline-block;
+    @include set-dimension(auto, 12rem);
+    display: flex;
+    padding: 0.2rem 0.8rem;
+    background-color: var(--dark-grey-color-1);
+    text-align: center;
+    align-items: center;
+    border-radius: 0.4rem;
+  }
+}
+
+.gradeKey-box {
+  padding-left: 1rem;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+
+  & > span {
+    @include set-dimension(2rem, 4rem);
+    display: inline-block;
+    background-color: var(--grey-color-7);
+    color: #fff;
+    border-radius: 0.4rem;
+    text-align: center;
+  }
+  &.focused {
+    background-color: var(--primary-color) !important;
+    color: #fff;
+  }
+}

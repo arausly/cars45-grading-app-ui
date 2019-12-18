@@ -1,0 +1,52 @@
+//display
+.hidden {
+  display: none;
+}
+// center object in a box
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//hide defaults
+
+//select input default
+.hide-select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hide-select::-ms-expand {
+  display: none;
+}
+
+.flex-align {
+  display: flex;
+  align-items: center;
+}
+
+.flex-margin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & > * {
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.view-port {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.grey-last-child {
+  svg {
+    color: var(--grey-color-6);
+    cursor: pointer;
+    font-size: 2rem;
+  }
+}

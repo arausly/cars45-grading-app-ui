@@ -1,0 +1,173 @@
+section.insight__data {
+  %graph-box-style {
+    transition: transform 300ms, box-shadow 300ms;
+    &:hover {
+      transform: translateY(-1rem);
+      box-shadow: var(--box-shadow-3);
+    }
+  }
+
+  @include set-dimension(100vh, 100vw);
+  padding: 1.5rem;
+  @include adjust-to(big-desktop) {
+    padding: 3rem !important;
+  }
+  font-family: var(--default-font);
+
+  & > div.insight__data-box {
+    display: grid;
+    grid: min-content min-content 1fr 1fr / 1fr;
+    grid-row-gap: 2rem;
+
+    & > div:not(:nth-child(2)):not(:first-child) {
+      border-radius: 0.5rem;
+      background-color: #fff;
+      box-shadow: var(--box-shadow-2);
+    }
+
+    & > div.insight-header:first-child {
+      display: grid;
+      grid: 1fr / repeat(3, 1fr);
+      justify-items: start;
+      padding: 1rem;
+      & > div {
+        grid-area: 1 / 1 / 2 / 2;
+        p {
+          white-space: nowrap;
+        }
+      }
+      & > h1 {
+        justify-self: center;
+      }
+    }
+    & > div:nth-child(4) {
+      @extend %graph-box-style;
+    }
+    & > div.insight__data-metrics:nth-child(2) {
+      grid-area: 2 / 1 / 3 / 2;
+      display: flex;
+      align-items: center;
+
+      & > *:not(:first-child) {
+        padding: 1.5rem;
+        position: relative;
+        width: 15rem;
+        &::after {
+          content: "";
+          position: absolute;
+          @include set-dimension(5rem, 0.1rem);
+          background-color: var(--grey-color-3);
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+
+        & > p {
+          color: var(--grey-color-6);
+          transition: color 0.3s;
+
+          &:first-child {
+            font-size: 1.8rem;
+            font-weight: 400;
+            // text-shadow: 0.1rem 0.1rem 0.01rem var(--grey-color-3);
+          }
+          &:last-child {
+            font-weight: bold;
+            color: #000;
+            font-size: 1.5rem;
+          }
+        }
+
+        margin-right: 3rem;
+      }
+
+      & > div:first-child {
+        margin-right: 2rem;
+        cursor: pointer;
+        @include create-square(auto);
+        display: flex;
+        align-items: center;
+        flex-flow: column-reverse nowrap;
+        & > p {
+          font-size: 1.1rem;
+        }
+        & > select {
+          border: 2px solid var(--primary-color);
+          cursor: pointer;
+          background-color: var(--grey-color-2);
+          border: unset;
+          box-shadow: unset;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          font-size: 1.6rem;
+          margin-right: 0;
+          & > option {
+            padding: 0.5rem;
+            transition: color 300ms, background-color 300ms;
+
+            &:hover,
+            &:checked {
+              background-color: var(--primary-color);
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+    & > div.graph-wrapper-box {
+      grid-area: 3 / 1 / 4 / -1;
+      position: relative;
+      & > div {
+        overflow-x: scroll;
+        @include create-square();
+      }
+    }
+
+    & > div.cargrade-prices {
+      grid-area: 4 / 1 / 5 / -1;
+      padding: 0.2rem 0.9rem;
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 2rem;
+        align-items: center;
+        &:not(:last-child) {
+          border-bottom: 0.05rem solid var(--grey-color-5);
+        }
+        & > p {
+          font-size: 1.3rem;
+          font-weight: bold;
+          margin-bottom: 0.2rem;
+        }
+        & > div {
+          & > p {
+            display: flex;
+            justify-content: space-between;
+            & > span {
+              &:first-child {
+                margin-right: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.cars45-insight__date-range {
+  input {
+    background-color: transparent;
+    border: unset;
+    border-bottom: 1px solid var(--grey-color-3);
+  }
+  & > div {
+    &:first-child {
+      margin-bottom: 1rem;
+    }
+  }
+}

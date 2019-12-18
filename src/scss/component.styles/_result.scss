@@ -1,0 +1,380 @@
+/*modifidications made 
+  author: Arausi Daniel
+  date:25th octber 2019
+*/
+
+.resultHeader {
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template: 1fr / repeat(3, 1fr);
+  position: relative;
+  & > svg {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  div.gradecar-back-button {
+    width: auto !important;
+    margin-left: 0.5rem;
+  }
+  & > h3 {
+    font-size: 3rem;
+    font-family: var(--font-display-2) !important;
+    justify-self: center;
+  }
+
+  div.gradecar-result-settings {
+    input#settings-toggle {
+      &:checked {
+        & ~ ul.cars45-settings-dropdown {
+          opacity: 1;
+          visibility: visible;
+          transform: translate(0);
+        }
+      }
+    }
+    & > label.settings-icon {
+      cursor: pointer;
+      margin-left: -5.5rem;
+      margin-bottom: 1.5rem;
+      & > svg {
+        font-size: 2.5rem;
+      }
+    }
+    position: absolute;
+    right: -3.8rem;
+    top: 0.1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    ul {
+      list-style: none;
+    }
+  }
+}
+
+.resultContainer {
+  border: 1px solid var(--grey-color-3) !important;
+  border-radius: 0.5rem;
+  margin-left: 5px;
+  padding: 3em;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-flow: column nowrap;
+}
+
+.sectionGrading,
+.sectionFactors {
+  margin-top: 3rem;
+
+  h3 {
+    font-size: 2.5rem;
+    text-align: left !important;
+    font-family: var(--font-display-3);
+    margin-bottom: 1.5rem;
+  }
+}
+
+.score {
+  text-align: center;
+  font-weight: 800;
+}
+
+.score p {
+  font-size: 1.5em;
+}
+
+.gradeContainer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  margin-top: 5em;
+}
+
+.gradeContainer > button {
+  height: 40px;
+}
+
+.saveButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveButtonContainer > button {
+  background-color: #ff9100;
+  border: none;
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: 3em;
+  padding: 1em;
+  @extend %centered-btn-style;
+  & > button:first-child {
+    margin-right: 1.5rem;
+  }
+}
+
+.buttonContainer > button {
+  background-color: #ff9100;
+  border: none;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  .resultContainer,
+  .gradeContainer {
+    flex-direction: column;
+  }
+
+  .score p {
+    font-size: 1.3em;
+  }
+
+  .sectionFactors {
+    margin-top: 1em;
+  }
+
+  .resultHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* custom style used in multiple components with same class structure */
+.summary-results-panel {
+  margin-top: 3rem;
+  margin-bottom: 3rem !important;
+  display: flex;
+  font-family: var(--default-font);
+  /* phone dimensions */
+  @include custom-adjustment(36.9375em, "small") {
+    flex-flow: column nowrap !important;
+    & > div {
+      &:not(:last-child) {
+        margin-bottom: 2rem !important;
+      }
+    }
+    & > div:hover {
+      transform: translateY(0);
+    }
+  }
+  & > div {
+    padding: 2rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    flex: 1;
+    border: 1px solid var(--grey-color-4);
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
+    }
+    & > p:first-child {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    & > p:last-child,
+    a:last-child {
+      font-size: 3rem;
+      font-weight: bold;
+      transition: all 0.5s;
+    }
+    &:first-child {
+      & > p:last-child,
+      & > a:last-child {
+        color: var(--primary-color);
+      }
+    }
+    &:hover {
+      box-shadow: var(--box-shadow-4);
+      transform: translateY(-1rem);
+      & > p:last-child {
+        color: var(--primary-color);
+      }
+    }
+
+    box-shadow: var(--box-shadow-5);
+  }
+}
+
+div.table-responsive {
+  border: 1px solid var(--grey-color-5);
+  border-radius: 0.7rem;
+}
+
+.resultContainer,
+.offerContainer,
+.admin-dashboard {
+  table {
+    margin-bottom: 0 !important;
+    thead {
+      background-color: var(--grey-color-4);
+      @include top-border-radius(0.5rem);
+      th {
+        font-size: 1.7rem;
+        font-weight: 500;
+        text-align: center;
+        border: unset;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(2n) {
+          background-color: var(--grey-color-4);
+        }
+        &:nth-child(2n + 1) {
+          transition: all 0.5s;
+          &:hover:not(:last-child) {
+            box-shadow: var(--box-shadow-3);
+            transform: translate(1px);
+          }
+          &:last-child {
+            &:hover {
+              box-shadow: var(--box-shadow-3-reverse);
+              transform: translate(1px);
+            }
+          }
+        }
+        th,
+        td {
+          font-size: 1.5rem;
+          font-weight: 400;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.cars45-custom-dropdown {
+  transition: max-height 1s ease-in-out;
+  display: flex;
+  flex-flow: column nowrap;
+  & > label {
+    &:hover {
+      background-color: var(--grey-color-4);
+    }
+    & > svg {
+      transition: transform 0.5s;
+      font-size: 1.6rem;
+    }
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 0 !important;
+
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--grey-color-2);
+  }
+
+  input[id^="see-settings"] {
+    &:checked {
+      & + label {
+        & > svg {
+          transform: rotate(0.5turn);
+        }
+      }
+      & ~ ul {
+        max-height: 100rem;
+      }
+    }
+    &:not(:checked) {
+      & ~ ul {
+        max-height: 0rem;
+      }
+    }
+  }
+}
+
+ul.cars45-settings-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(1.5rem);
+  position: absolute;
+  transition: all 0.3s;
+  left: -21.7rem;
+  top: -2rem;
+  width: 15rem;
+  border: 1px solid var(--grey-color-4);
+  box-shadow: var(--box-shadow-3);
+  background-color: #fff;
+  font-size: 1.3rem;
+  font-family: var(--default-font);
+  p,
+  label {
+    margin: 0;
+  }
+
+  li,
+  label {
+    border-bottom: 1px solid var(--grey-color-2);
+  }
+
+  & > li,
+  & > label {
+    transition: all 0.3s;
+
+    &:not(.cars45-custom-dropdown) {
+      cursor: pointer;
+      padding: 1rem;
+      &:hover {
+        background-color: var(--grey-color-4);
+      }
+      @include top-border-radius(0.5rem);
+    }
+
+    ul {
+      max-height: 0rem;
+      overflow: hidden;
+      transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+      width: 100%;
+      li,
+      label {
+        display: flex;
+        justify-content: space-between;
+        transition: all 0.3s;
+        padding: 1rem;
+        &:hover {
+          background-color: var(--grey-color-4);
+        }
+      }
+      li:first-child {
+        &:hover {
+          background-color: var(--primary-color);
+        }
+      }
+      li:nth-child(2) {
+        &:hover {
+          background-color: var(--color-green-4);
+        }
+      }
+      li:nth-child(3) {
+        &:hover {
+          background-color: var(--color-yellow-1);
+        }
+      }
+      li:nth-child(4) {
+        &:hover {
+          background-color: var(--color-red-2);
+        }
+      }
+
+      li:last-child {
+        border: unset;
+        @include bottom-border-radius(0.5rem);
+        &:hover {
+          background-color: var(--color-red-1);
+        }
+      }
+    }
+  }
+
+  > label:nth-child(-n + 2) {
+    width: 100%;
+    // padding-left: 0rem;
+    padding-right: 0rem;
+    text-align: left;
+  }
+}

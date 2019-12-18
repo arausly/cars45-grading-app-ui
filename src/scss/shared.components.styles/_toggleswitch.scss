@@ -1,0 +1,30 @@
+input[id^="cars45-switch-check"] {
+  &:checked {
+    & + label.cars45-switch-box {
+      background-color: var(--primary-color);
+      & > label {
+        transform: translateX(3rem);
+      }
+    }
+  }
+}
+
+.cars45-switch-box {
+  @include set-dimension(3rem, 6rem);
+  border: 1px solid var(--grey-color-3);
+  border-radius: 1.5rem;
+  background-color: var(--grey-color-3);
+  box-shadow: var(--box-shadow-4);
+  transition: all 0.3s;
+  cursor: pointer;
+  & > label {
+    display: inline-block;
+    @include create-square(3rem);
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: -0.1rem;
+    margin-left: -0.1rem;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+}
