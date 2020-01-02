@@ -19,6 +19,7 @@ import Menu from "./components/shared/Menu/menu.main";
 //pages
 import LoginPage from "./components/Auth/Login/login.main";
 import CarSearchPage from "./components/CarSearch/carSearch.main";
+import CarGrade from "./components/GradeCar/gradecar.main";
 
 //contexts
 import NotificationProvider from "./components/shared/Notifications/notification.main";
@@ -44,6 +45,7 @@ export default () => {
               <Menu.CenterMenu />
               <Switch>
                 <Route exact path="/" component={CarSearchPage} />
+                <Route path="/grade" component={CarGrade} />
               </Switch>
             </CenterProtectedRoute>
             <AdminProtectedRoute>

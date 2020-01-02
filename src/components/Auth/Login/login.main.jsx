@@ -24,9 +24,10 @@ const Login = ({
   }
 }) => {
   const [loginCred, setLoginCred] = useState({ email: "", password: "" });
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [loginUser, { data, error, loading }] = useMutation(loginMutation);
 
-  if (error) {
+  if (error && isSubmitted) {
     notifyFailure("Failed to login, Please try again");
   }
 
@@ -41,7 +42,8 @@ const Login = ({
       value={{
         setLoginCred,
         loginCred,
-        loginUser
+        loginUser,
+        setIsSubmitted
       }}
     >
       <div className="row justify-content-md-center p-t-28 login-wrapper">

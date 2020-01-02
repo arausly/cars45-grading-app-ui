@@ -1,9 +1,11 @@
 export const getItem = key => {
-  return localStorage.getItem(key);
+  const result = localStorage.getItem(key);
+  if (result) return JSON.parse(result);
+  return null;
 };
 
 export const setItem = (key, value) => {
-  localStorage.setItem(key, value);
+  localStorage.setItem(key, JSON.stringify(value));
 };
 
 export const dropDB = () => {

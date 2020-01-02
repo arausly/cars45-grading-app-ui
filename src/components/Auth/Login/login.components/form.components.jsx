@@ -10,23 +10,31 @@ const LoginForm = () => {
     setLoginCred,
     loginCred,
     loginCred: { email, password },
-    loginUser
+    loginUser,
+    setIsSubmitted
   } = useContext(LoginContext);
+
+  const handleLoginSubmit = async e => {
+    try {
+      setIsSubmitted(true);
+      e.preventDefault();
+      await loginUser({
+        variables: {
+          loginCred
+        }
+      });
+    } catch (err) {}
+  };
+
   return (
-    <Form
-      onSubmit={e => {
-        e.preventDefault();
-        loginUser({
-          variables: {
-            loginCred
-          }
-        });
-      }}
-    >
+    <Form onSubmit={handleLoginSubmit}>
       <FormGroup>
         <input
           value={email}
-          onChange={e => setLoginCred({ ...loginCred, email: e.target.value })}
+          onChange={e => {
+            setIsSubmitted(false);
+            setLoginCred({ ...loginCred, email: e.target.value });
+          }}
           type="text"
           className="form-control form-control-lg"
           name="email"
@@ -38,9 +46,10 @@ const LoginForm = () => {
       <FormGroup className="password-input">
         <input
           value={password}
-          onChange={e =>
-            setLoginCred({ ...loginCred, password: e.target.value })
-          }
+          onChange={e => {
+            setIsSubmitted(false);
+            setLoginCred({ ...loginCred, password: e.target.value });
+          }}
           type={showPassword}
           className="form-control form-control-lg"
           name="password"

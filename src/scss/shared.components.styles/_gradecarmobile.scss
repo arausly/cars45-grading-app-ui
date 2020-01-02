@@ -1,0 +1,48 @@
+details.mobile_gradecar {
+  font-family: var(--default-font) !important;
+
+  &[open] {
+    summary {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+  }
+
+  & > summary {
+    background-color: var(--color-green-4);
+    height: 4rem;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    & > * {
+      margin-top: 1rem;
+    }
+    & > p {
+      margin-right: auto;
+    }
+    border-bottom: 1px solid var(--grey-color-4);
+  }
+
+  & > ol {
+    background-color: #fff;
+    box-shadow: var(--box-shadow-4);
+    & > div {
+      width: 100%;
+      padding-top: 1.5rem;
+      & > label {
+        width: 100%;
+        div.checklist-box {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.2rem 1.3rem;
+          & > span {
+            font-size: 1.3rem;
+          }
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

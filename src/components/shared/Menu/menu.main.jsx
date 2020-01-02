@@ -19,7 +19,7 @@ import {
   isAuthenticated,
   isAdminAuthenticated
 } from "../../../config/token.config";
-import { removeItem } from "../../../handlers/storage.handler";
+import { dropDB } from "../../../handlers/storage.handler";
 
 const CenterMenu = ({ history }) => {
   const [collapse, setCollapse] = useState(true);
@@ -35,7 +35,7 @@ const CenterMenu = ({ history }) => {
             <NavItem>
               <NavLink
                 tag={RRNavLink}
-                to="/dashboard"
+                to="/"
                 activeClassName="active"
                 className="text-white"
               >
@@ -82,7 +82,7 @@ const CenterMenu = ({ history }) => {
                 <DropdownItem>
                   <NavItem
                     onClick={() => {
-                      removeItem("centerToken");
+                      dropDB();
                       history.push("/login");
                     }}
                   >
@@ -139,7 +139,7 @@ const AdminMenu = ({ history }) => {
                 <DropdownItem>
                   <NavItem
                     onClick={() => {
-                      removeItem("adminToken");
+                      dropDB();
                       history.push("/admin/login");
                     }}
                   >

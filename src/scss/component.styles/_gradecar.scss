@@ -360,7 +360,7 @@ made modifications to classes gradeMain, gradeKeys, gradeKeysButton
 
 .gradeChecklist {
   @include custom-adjustment(48.0625em, "large") {
-    height: 50rem;
+    height: 58rem;
   }
   height: 100%;
   margin-right: 1em;
@@ -480,4 +480,8 @@ div.gradecar-back-button {
     font-size: 2rem;
     cursor: pointer;
   }
+}
+
+p.gradecar-title {
+  white-space: nowrap;
 }

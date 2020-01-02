@@ -1,14 +1,22 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { Button } from "reactstrap";
+import { withRouter } from "react-router-dom";
 
 //custom dependencies
 import { CustomLoader } from "../../shared";
 
-//graphql
-import { getCarByLotNo, getCarGrade } from "../carSearch.graphql";
+//custom handlers
+import { setItem } from "../../../handlers/storage.handler";
 
-const CarByLotNo = ({ notifyFailure, lotNumber }) => {
+//graphql
+import {
+  getCarByLotNo,
+  getCarGrade,
+  addFetchedCar
+} from "../carSearch.graphql";
+
+const CarByLotNo = ({ notifyFailure, lotNumber, history }) => {
   const { data, loading, error } = useQuery(getCarByLotNo, {
     variables: {
       lotNumber
@@ -16,6 +24,14 @@ const CarByLotNo = ({ notifyFailure, lotNumber }) => {
   });
 
   let car = (data && data.car) || null;
+
+  /** write fetched data to cache for local state management */
+  const [writeToCache] = useMutation(addFetchedCar, {
+    variables: {
+      type: "lot",
+      car: data
+    }
+  });
 
   /** has to be an empty string because the api expects a string to search for lotNumber */
   const gradeQuery = useQuery(getCarGrade, {
@@ -52,6 +68,11 @@ const CarByLotNo = ({ notifyFailure, lotNumber }) => {
           <Button
             type="button"
             className="dashboard-btn cars45-btn primary btn--animated"
+            onClick={() => {
+              writeToCache();
+              history.push("/grade");
+              setItem("car", data);
+            }}
           >
             Grade
           </Button>
@@ -60,4 +81,4 @@ const CarByLotNo = ({ notifyFailure, lotNumber }) => {
   );
 };
 
-export default CarByLotNo;
+export default withRouter(CarByLotNo);

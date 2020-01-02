@@ -1,14 +1,15 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { Button } from "reactstrap";
+import { withRouter } from "react-router-dom";
 
 //custom dependencies
 import { CustomLoader } from "../../shared";
 
 //graphql
-import { getACarByVin, getCarGrade } from "../carSearch.graphql";
+import { getACarByVin, getCarGrade, addFetchedCar } from "../carSearch.graphql";
 
-const CarByVin = ({ notifyFailure, vin }) => {
+const CarByVin = ({ notifyFailure, vin, history }) => {
   const { data, loading, error } = useQuery(getACarByVin, {
     variables: {
       vin
@@ -16,6 +17,14 @@ const CarByVin = ({ notifyFailure, vin }) => {
   });
 
   let car = (data && data.car) || null;
+
+  /** write fetched data to cache for local state management */
+  const [writeToCache] = useMutation(addFetchedCar, {
+    variables: {
+      type: "vin",
+      car: data
+    }
+  });
 
   /** has to be an empty string because the api expects a string to search for lotNumber */
   const gradeQuery = useQuery(getCarGrade, {
@@ -26,7 +35,6 @@ const CarByVin = ({ notifyFailure, vin }) => {
 
   if (loading || gradeQuery.loading) return <CustomLoader />;
   if (error || gradeQuery.error) {
-    console.log("gradeError", gradeQuery.error, error);
     notifyFailure("Failed to get car");
   }
   return (
@@ -52,6 +60,10 @@ const CarByVin = ({ notifyFailure, vin }) => {
           <Button
             type="button"
             className="dashboard-btn cars45-btn primary btn--animated"
+            onClick={() => {
+              writeToCache();
+              history.push("/grade");
+            }}
           >
             Grade
           </Button>
@@ -60,4 +72,4 @@ const CarByVin = ({ notifyFailure, vin }) => {
   );
 };
 
-export default CarByVin;
+export default withRouter(CarByVin);

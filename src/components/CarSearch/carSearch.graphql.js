@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const carFragment = gql`
+export const carFragment = gql`
   fragment carFields on Car {
     carUUID
     lotNumber
@@ -44,5 +44,12 @@ export const getCarGrade = gql`
       performedByQc
       car
     }
+  }
+`;
+
+//client graphql queries
+export const addFetchedCar = gql`
+  mutation addFetchedCar($type: String!, $car: FetchedCarInput!) {
+    addFetchedCar(type: $type, car: $car) @client
   }
 `;
